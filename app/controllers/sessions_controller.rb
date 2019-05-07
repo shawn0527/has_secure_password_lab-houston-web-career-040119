@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
     @user = User.find_by(name: params[:name])
     if @user.try(:authenticate, params[:password])
       redirect_to "/users/#welcome"
-      session[:user_id] = @user.id
+      session[:user_id] = user_params[:id]
     else
       redirect_to '/users#new'
     end
